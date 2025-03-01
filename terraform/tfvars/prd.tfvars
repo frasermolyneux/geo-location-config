@@ -2,7 +2,7 @@ environment = "prd"
 location    = "uksouth"
 instance    = "01"
 
-subscription_id = "32444f38-32f4-409f-889c-8e8aa2b5b4d1"
+subscription_id = "d3b204ab-7c2b-47f7-8d5a-de19e85591e7"
 
 log_analytics_subscription_id     = "d68448b0-9947-46d7-8771-baa331a3063a"
 log_analytics_resource_group_name = "rg-platform-logging-prd-uksouth-01"
