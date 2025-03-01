@@ -4,9 +4,9 @@ locals {
 }
 
 locals {
-  json_files = [for environment in var.environments : jsondecode(file("environments/${environment}.json"))]
+  json_files = [for config in var.app_configs : jsondecode(file("app_configs/${config}.json"))]
 
-  environments = [for content in local.json_files : {
+  configs = [for content in local.json_files : {
     name = content.environment,
     keys = [for key in lookup(content, "keys", []) : {
       key   = key.key,
@@ -15,14 +15,14 @@ locals {
     }]
   }]
 
-  environment_keys = flatten([
-    for environment in local.environments : [
-      for key in environment.keys : {
-        key         = format("%s-%s", environment.name, key.key)
-        environment = environment.name
-        key_name    = key.key
-        label       = key.label
-        value       = key.value
+  config_keys = flatten([
+    for config in local.configs : [
+      for key in config.keys : {
+        key      = format("%s-%s", config.name, key.key)
+        config   = config.name
+        key_name = key.key
+        label    = key.label
+        value    = key.value
       }
     ]
   ])

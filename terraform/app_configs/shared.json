@@ -1,0 +1,12 @@
+{
+    "environment": "shared",
+    "keys": [
+        {
+            "key": "common-test-key",
+            "label": "common-test1-label",
+            "value": "common-this-is-my-test-key"
+        }
+    ],
+    "secret_keys": [],
+    "features": []
+}
