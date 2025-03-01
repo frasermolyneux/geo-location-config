@@ -7,7 +7,8 @@ resource "azurerm_app_configuration" "app_configuration" {
   location            = azurerm_resource_group.rg.location
 
   #checkov:skip=CKV_AZURE_187: Ensure App configuration purge protection is enabled :: Not compatible with free sku.
-  purge_protection_enabled = false
+  purge_protection_enabled             = false
+  data_plane_proxy_authentication_mode = "Pass-through"
 
   local_auth_enabled = false
 
