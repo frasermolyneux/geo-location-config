@@ -1,13 +1,13 @@
 resource "random_id" "config_id" {
-  for_each = { for each in local.configs : each.key => each }
+  for_each = { for each in local.configs : each.name => each }
 
   byte_length = 6
 }
 
 resource "azurerm_key_vault" "config_kv" {
-  for_each = { for each in local.configs : each.key => each }
+  for_each = { for each in local.configs : each.name => each }
 
-  name = "kv-${random_id.config_id[each.value.key].hex}-${var.location}"
+  name = "kv-${random_id.config_id[each.value.name].hex}-${var.location}"
 
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
