@@ -1,11 +1,11 @@
 resource "random_id" "config_id" {
-  for_each = { for each in local.config_keys : each.key => each }
+  for_each = { for each in local.configs : each.key => each }
 
   byte_length = 6
 }
 
 resource "azurerm_key_vault" "config_kv" {
-  for_each = { for each in local.config_keys : each.key => each }
+  for_each = { for each in local.configs : each.key => each }
 
   name = "kv-${random_id.config_id[each.value.key].hex}-${var.location}"
 
@@ -15,7 +15,7 @@ resource "azurerm_key_vault" "config_kv" {
   tenant_id = data.azurerm_client_config.current.tenant_id
 
   tags = merge(var.tags, {
-    config = each.value.config
+    config = each.value.name
   })
 
   soft_delete_retention_days = 90
