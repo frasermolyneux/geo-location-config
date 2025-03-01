@@ -1,0 +1,17 @@
+{
+    "environment": "dev",
+    "keys": [
+        {
+            "key": "test-key",
+            "label": "test1-label",
+            "value": "this-is-my-test-key"
+        },
+        {
+            "key": "another-test-key",
+            "label": "another-test1-label",
+            "value": "this-is-another-test-key"
+        }
+    ],
+    "secret_keys": [],
+    "features": []
+}
