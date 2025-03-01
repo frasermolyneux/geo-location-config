@@ -3,7 +3,7 @@ resource "azurerm_app_configuration_key" "environment_keys" {
 
   configuration_store_id = azurerm_app_configuration.app_configuration.id
 
-  key   = "${each.value.config}-${each.value.key_name}"
+  key   = "${each.value.prefix}-${each.value.key_name}"
   label = each.value.label
   value = each.value.value
 }

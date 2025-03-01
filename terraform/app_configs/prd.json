@@ -1,5 +1,5 @@
 {
-    "environment": "prd",
+    "prefix": "prd",
     "keys": [
         {
             "key": "test-key",

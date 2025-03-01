@@ -7,7 +7,7 @@ locals {
   json_files = [for config in var.app_configs : jsondecode(file("app_configs/${config}.json"))]
 
   configs = [for content in local.json_files : {
-    name = content.environment,
+    prefix = content.prefix,
     keys = [for key in lookup(content, "keys", []) : {
       key   = key.key,
       label = lookup(key, "label", ""),
@@ -18,8 +18,8 @@ locals {
   config_keys = flatten([
     for config in local.configs : [
       for key in config.keys : {
-        key      = format("%s-%s", config.name, key.key)
-        config   = config.name
+        key      = format("%s-%s", config.prefix, key.key)
+        prefix   = config.prefix
         key_name = key.key
         label    = key.label
         value    = key.value
