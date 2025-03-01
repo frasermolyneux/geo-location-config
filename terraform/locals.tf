@@ -7,7 +7,7 @@ locals {
   json_files = [for f in fileset("environments", "*.json") : jsondecode(file("environments/${f}"))]
 
   environments = [for content in local.json_files : {
-    name = content.name,
+    name = content.environment,
     keys = [for key in lookup(content, "keys", []) : {
       key   = key.key,
       label = lookup(key, "label", ""),
