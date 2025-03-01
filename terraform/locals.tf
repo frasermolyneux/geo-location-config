@@ -4,7 +4,7 @@ locals {
 }
 
 locals {
-  json_files = [for f in fileset("environments", "*.json") : jsondecode(file("environments/${f}"))]
+  json_files = [for environment in var.environments : jsondecode(file("environments/${environment}.json"))]
 
   environments = [for content in local.json_files : {
     name = content.environment,

@@ -16,6 +16,10 @@ variable "log_analytics_subscription_id" {}
 variable "log_analytics_resource_group_name" {}
 variable "log_analytics_workspace_name" {}
 
+variable "environments" {
+  type = list(string)
+}
+
 variable "tags" {
   default = {}
 }
