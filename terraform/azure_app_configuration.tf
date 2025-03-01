@@ -6,7 +6,8 @@ resource "azurerm_app_configuration" "app_configuration" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
-  purge_protection_enabled = true
+  #checkov:skip=CKV_AZURE_187: Ensure App configuration purge protection is enabled :: Not compatible with free sku.
+  purge_protection_enabled = false
 
   local_auth_enabled = false
 
