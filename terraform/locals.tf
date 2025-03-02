@@ -13,6 +13,10 @@ locals {
       label = lookup(key, "label", ""),
       value = lookup(key, "value", "")
     }]
+    secret_keys = [for key in lookup(content, "secret_keys", []) : {
+      key   = key.key,
+      label = lookup(key, "label", "")
+    }]
   }]
 
   config_keys = flatten([
@@ -23,6 +27,17 @@ locals {
         key_name = key.key
         label    = key.label
         value    = key.value
+      }
+    ]
+  ])
+
+  config_secret_keys = flatten([
+    for config in local.configs : [
+      for key in config.secret_keys : {
+        key      = format("%s-%s", config.prefix, key.key)
+        prefix   = config.prefix
+        key_name = key.key
+        label    = key.label
       }
     ]
   ])

@@ -7,3 +7,4 @@ resource "azurerm_app_configuration_key" "environment_keys" {
   label = each.value.label
   value = each.value.value
 }
+
