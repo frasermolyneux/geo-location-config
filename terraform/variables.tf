@@ -6,10 +6,6 @@ variable "location" {
   default = "uksouth"
 }
 
-variable "instance" {
-  default = "01"
-}
-
 variable "subscription_id" {}
 
 variable "log_analytics_subscription_id" {}

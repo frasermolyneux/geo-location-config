@@ -1,6 +1,5 @@
 environment = "prd"
 location    = "uksouth"
-instance    = "01"
 
 subscription_id = "d3b204ab-7c2b-47f7-8d5a-de19e85591e7"
 
