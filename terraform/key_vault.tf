@@ -28,4 +28,7 @@ resource "azurerm_key_vault" "config_kv" {
     bypass         = "AzureServices"
     default_action = "Allow"
   }
+
+  #checkov:skip=CKV2_AZURE_32: Ensure private endpoint is configured to key vault :: Free/consumption SKUs are being used so cannot use private endpoints.
+  #checkov:skip=CKV_AZURE_189: Ensure that Azure Key Vault disables public network access :: Free/consumption SKUs are being used so public access is required.
 }
